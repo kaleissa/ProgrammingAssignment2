@@ -3,7 +3,7 @@
 
 ## Write a short comment describing this function
 
-makeCacheMatrix <- function(x = matrix(x, nrow=ncol)) {     
+makeCacheMatrix <- function(x = SquareMatrix(x,)) {     
       s <- NULL
       set <- function(y) {
         x <<- y
