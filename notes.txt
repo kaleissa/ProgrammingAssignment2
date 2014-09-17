@@ -1,9 +1,56 @@
-> xmat<-matrix(c(4,3,3,2), nrow=2)
-> xmat
-     [,1] [,2]
-[1,]    4    3
-[2,]    3    2
-> solve(xmat)
-     [,1] [,2]
-[1,]   -2    3
-[2,]    3   -4
+
+
+makeCacheMatrix (c(4,3,3,2),2,2)
+
+data<- c(4,3,3,2)
+nrow<- 2
+ncol<- 2
+
+cacheSolve (c(4,3,3,2),2,2)
+
+data<- c(4,3,3,2)
+nrow<- 2
+ncol<- 2
+
+
+cacheSolve (c(1,3,3,1),2,2)
+
+data<- c(4,3,3,2)
+nrow<- 2
+ncol<- 2
+
+
+makeCacheMatrix <- function(data= NA, nrow=1, ncol=1, byrow=FALSE, dimnames=NULL){ ## create variables
+
+        x<-matrix(data, nrow, ncol, byrow, dimnames) ## creates matrix from provided variable
+
+        x<<-x                                        ## cashes the value of provided matrix
+
+        cachedinverse<-solve(x)                      ## Solves for inverse and 
+                                                     ## assigns it to inside variable {cachedinverse}
+
+        cachedinverse<<-cachedinverse                ## creates outside outside variable {cachedinverse}      
+        
+        print ("the inverse of the provided matrix is:")
+        cachedinverse                                ## returns / prints {cachedinverse}
+        
+         }
+
+##
+##
+##
+
+cacheSolve <- function(data= NA, nrow=1, ncol=1, byrow=FALSE, dimnames=NULL){ ## create variables
+
+        
+        y<-matrix(data, nrow, ncol, byrow, dimnames)     ## creates matrix from provided variables
+
+        
+        if (!identical(x,y)) {        
+        print("matrix x is not identical to matrix y")}
+      
+        else {
+        print("matrix are identical... getting cached data")
+        print (cachedinverse)}
+        } 
+

@@ -1,34 +1,69 @@
-## Put comments here that give an overall description of what your
-## functions do
 
-## Write a short comment describing this function
 
-makeCacheMatrix <- function(x = SquareMatrix(x,)) {     
-      s <- NULL
-      set <- function(y) {
-        x <<- y
-        s <<- NULL
-      }
-      get <- function() x
-      setsolve <- function(solve) s <<- solve
-      getsolve <- function() s
-      list(set = set, get = get,
-           setsolve = setsolve,
-           getsolve = getsolve)
+
+
+
+makeCacheMatrix (c(4,3,3,2),2,2)
+
+data<- c(4,3,3,2)
+nrow<- 2
+ncol<- 2
+
+cacheSolve (c(4,3,3,2),2,2)
+
+data<- c(4,3,3,2)
+nrow<- 2
+ncol<- 2
+
+
+cacheSolve (c(1,3,3,1),2,2)
+
+data<- c(4,3,3,2)
+nrow<- 2
+ncol<- 2
+
+## This second programming assignment will require you to write an R
+## function that is able to cache potentially time-consuming computations.
+## For this assignment, assume that the matrix supplied is always
+## invertible.
+
+
+## This function takes a supplied matrix = x 
+## and calculates the inverse matrix. Then stores
+## the result for future refrence.
+
+
+makeCacheMatrix <- function(data= NA, nrow=1, ncol=1, byrow=FALSE, dimnames=NULL){ ## create variables
+  
+  x<-matrix(data, nrow, ncol, byrow, dimnames) ## creates matrix from provided variable
+  
+  x<<-x                                        ## cashes the value of provided matrix
+  
+  cachedinverse<-solve(x)                      ## Solves for inverse and 
+  ## assigns it to inside variable {cachedinverse}
+  
+  cachedinverse<<-cachedinverse                ## creates outside outside variable {cachedinverse}      
+  
+  print ("the inverse of the provided matrix is:")
+  cachedinverse                                ## returns / prints {cachedinverse}
+  
 }
 
+##
+##
+##
 
-## Write a short comment describing  function
-
-cacheSolve <- function(x, ...) {
-      s <- x$getsolve()
-      if(!is.null(s)) {
-        message("getting cached data")
-        return(s)
-      }
-      data <- x$get()
-      s <- solve(data, ...)
-      x$setsolve(s)
-      s
-    } ## Return a matrix that is the inverse of 'x'
+cacheSolve <- function(data= NA, nrow=1, ncol=1, byrow=FALSE, dimnames=NULL){ ## create variables
+  
+  
+  y<-matrix(data, nrow, ncol, byrow, dimnames)     ## creates matrix from provided variables
+  
+  
+  if (!identical(x,y)) {        
+    print("matrix x is not identical to matrix y")}
+  
+  else {
+    print("matrix are identical... getting cached data")
+    print (cachedinverse)}
+} 
 
